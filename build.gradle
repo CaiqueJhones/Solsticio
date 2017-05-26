@@ -1,0 +1,12 @@
+allprojects {
+    apply plugin: 'maven-publish'
+
+    project.ext.set("versionCode", 1)
+    project.ext.set("versionMajor", 0)
+    project.ext.set("versionMinor", 1)
+    project.ext.set("versionPath", 0)
+
+    repositories {
+        jcenter()
+    }
+}

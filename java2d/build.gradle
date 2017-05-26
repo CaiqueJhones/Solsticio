@@ -1,0 +1,42 @@
+apply plugin: 'java-library'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
+def jarVersion = "$project.versionMajor.$project.versionMinor.$project.versionPath"
+
+jar.baseName = 'solsticio-java2d'
+jar {
+    manifest.attributes provider: 'gradle'
+    manifest {
+        attributes 'Implementation-Title': 'solsticio-java2d',
+                   'Implementation-Version': jarVersion
+    }
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.14'
+    implementation 'org.slf4j:slf4j-simple:1.7.21'
+
+    // Physics engine
+    api 'org.dyn4j:dyn4j:3.2.3'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.6.1'
+
+    api project(':core')
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'io.jhonesdeveloper.solstice'
+            artifactId 'java2d'
+            version jarVersion
+
+            from components.java
+        }
+    }
+}
