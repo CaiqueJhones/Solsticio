@@ -25,7 +25,7 @@ public class CounterTest {
 		}
 		log("countFrequencyWith10", System.nanoTime() - begin);
 		
-		assertEquals(10, counter.getFrequency(), 1);
+		assertEquals(10, counter.getFrequency(), 3);
 	}
 	
 	@Test
@@ -37,7 +37,7 @@ public class CounterTest {
 		}
 		log("countFrequencyWith20", System.nanoTime() - begin);
 		
-		assertEquals(20, counter.getFrequency(), 1);
+		assertEquals(20, counter.getFrequency(), 3);
 	}
 
 	@Test
@@ -50,7 +50,7 @@ public class CounterTest {
 		}
 		log("countFrequencyWith30", System.nanoTime() - begin);
 		
-		assertEquals(30, counter.getFrequency(), 1);
+		assertEquals(30, counter.getFrequency(), 3);
 	}
 	
 	private void log(String methodName, long nanoTime) {

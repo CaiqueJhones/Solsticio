@@ -20,9 +20,6 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.14'
     implementation 'org.slf4j:slf4j-simple:1.7.21'
 
-    // Physics engine
-    api 'org.dyn4j:dyn4j:3.2.3'
-
     testImplementation 'junit:junit:4.12'
     testImplementation 'org.mockito:mockito-core:2.6.1'
 
@@ -32,7 +29,7 @@ dependencies {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId 'io.jhonesdeveloper.solstice'
+            groupId 'io.solstice'
             artifactId 'java2d'
             version jarVersion
 
