@@ -37,6 +37,10 @@ public class Sprite extends Node2D {
     private int currentColumn = 1;
     private int currentRow = 1;
     
+    private double angle;
+    private double anchorX;
+    private double anchorY;
+    
     private void init() {
         if (source == null) return;
         width = source.getWidth() / columns;
@@ -108,6 +112,16 @@ public class Sprite extends Node2D {
     public void setCurrentRow(int currentRow) {
         this.currentRow = Math.max(1, Math.min(rows, currentRow));
     }
+    
+    public void rotate(double angleInDegress, double anchorX, double anchorY) {
+        this.angle = angleInDegress;
+        this.anchorX = anchorX;
+        this.anchorY = anchorY;
+    }
+    
+    public double getAngle() {
+        return angle;
+    }
 
     @Override
     public void setup() {
@@ -117,11 +131,14 @@ public class Sprite extends Node2D {
     
     @Override
     public void paint(Painter painter) {
+        painter.save();
+        painter.rotate(angle, anchorX, anchorY).apply();
+        
         Vector2D p = getGlobalPosition();
-        painter.drawImage(
-                getImage(currentColumn, currentRow), 
-                (float) p.x, 
-                (float) p.y); 
+        painter.drawImage(getImage(currentColumn, currentRow), (float) p.x, (float) p.y); 
+        
+        painter.restore();
+        
         paintChildren(painter);
     }
 }
