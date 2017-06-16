@@ -32,7 +32,7 @@ public interface GameStep {
 	/**
 	 * Atualiza lógica de negócios.
 	 */
-	void updateLogic(long timeInMillis);
+	void updateLogic(double delta);
 	
 	/**
 	 * Renderiza os recursos visuais.

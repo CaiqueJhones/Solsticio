@@ -43,7 +43,7 @@ public class GameMainLoop implements GameLoop {
 	private Counter counterUPS;
 	private Counter counterFPS;
 	
-	private long begin;
+	//private long begin;
 
 	private long desiredUpdateTime;
 	private long afterTime;
@@ -53,7 +53,7 @@ public class GameMainLoop implements GameLoop {
 	private int noDelaysPerYield = DEFAULT_NO_DELAYS_PER_YIELD;
 	private int maxFrameSkips = DEFAULT_MAX_FRAME_SKIPS;
 	private int noDelays = 0;
-	
+		
 	private boolean pause;
 	
 	public GameMainLoop(GameStep gameStep, int expectedTicks, int maxFrameSkips, int noDelaysPerYield) {
@@ -99,7 +99,9 @@ public class GameMainLoop implements GameLoop {
 
 	private void updateLogic() {
 		counterUPS.increment();
-		gameStep.updateLogic(System.currentTimeMillis() - begin);
+		int frequency = counterUPS.getFrequency();
+		double delta = frequency == 0 ? 0 : 1 / frequency;
+		gameStep.updateLogic(delta);
 	}
 
 	private void renderGraphics() {
@@ -121,7 +123,7 @@ public class GameMainLoop implements GameLoop {
 	public void run() {
 		log.info("Solstice Appliation started!");
 		active = true;
-		begin = System.currentTimeMillis();
+		//begin = System.currentTimeMillis();
 		try {
 			gameStep.setup(this);
 			while (active) {		

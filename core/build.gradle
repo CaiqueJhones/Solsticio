@@ -34,7 +34,7 @@ task sourceJar(type: Jar) {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId 'io.solstice'
+            groupId 'io.solsticio'
             artifactId 'core'
             version jarVersion
 

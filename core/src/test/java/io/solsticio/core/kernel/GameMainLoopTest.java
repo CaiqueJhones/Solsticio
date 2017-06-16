@@ -24,7 +24,7 @@ public class GameMainLoopTest {
 
 		try {
 			verify(gameStep).setup(gameLoop);
-			verify(gameStep, atLeastOnce()).updateLogic(anyLong());
+			verify(gameStep, atLeastOnce()).updateLogic(anyDouble());
 			verify(gameStep, atLeastOnce()).renderGraphics();
 			verify(gameStep, atLeastOnce()).paintGraphics();
 		} finally {
@@ -77,7 +77,7 @@ public class GameMainLoopTest {
 		}
 
 		@Override
-		public void updateLogic(long timeInMillis) {
+		public void updateLogic(double delta) {
 			try {
 				TimeUnit.NANOSECONDS.sleep(20);
 			} catch (InterruptedException e) {

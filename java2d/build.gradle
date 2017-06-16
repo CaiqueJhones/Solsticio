@@ -29,7 +29,7 @@ dependencies {
 publishing {
     publications {
         maven(MavenPublication) {
-            groupId 'io.solstice'
+            groupId 'io.solsticio'
             artifactId 'java2d'
             version jarVersion
 
