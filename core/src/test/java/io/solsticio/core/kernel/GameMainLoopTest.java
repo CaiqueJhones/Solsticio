@@ -22,6 +22,8 @@ public class GameMainLoopTest {
 		GameLoop gameLoop = new GameMainLoop(gameStep);
 		new Thread(gameLoop).start();
 		
+		Thread.sleep(500);
+		
 		verify(gameStep).setup(gameLoop);
         verify(gameStep, atLeastOnce()).updateLogic(anyDouble());
         verify(gameStep, atLeastOnce()).renderGraphics();
