@@ -18,6 +18,7 @@
 package io.solsticio.core.graphics;
 
 import io.solsticio.core.geom.IPath;
+import io.solsticio.core.geom.Shape;
 
 /**
  * @author Caique Jhones
@@ -50,6 +51,8 @@ public interface Painter {
     void drawImage(Image image, float x, float y);
     
     void drawPath(IPath path);
+    
+    void draw(Shape shape);
 
     void fillRect(float x, float y, float width, float height, Stroke stroke);
 
@@ -58,6 +61,8 @@ public interface Painter {
     void fillCircle(float x, float y, float radius, Stroke stroke);
     
     void fillPath(IPath path);
+    
+    void fill(Shape shape);
 
     int getWidth();
 
