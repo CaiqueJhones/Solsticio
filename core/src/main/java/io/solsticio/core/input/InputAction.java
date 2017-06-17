@@ -41,7 +41,7 @@ public final class InputAction {
 
     public boolean isClicked() {
         for (Key key : keys) {
-            if (!adapter.isClicked(key)) return true;
+            if (adapter.isClicked(key)) return true;
         }
         return false;
     }

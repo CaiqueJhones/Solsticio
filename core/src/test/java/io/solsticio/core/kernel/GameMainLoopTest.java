@@ -21,17 +21,15 @@ public class GameMainLoopTest {
 	public void verifyStepMethods() throws Exception {
 		GameLoop gameLoop = new GameMainLoop(gameStep);
 		new Thread(gameLoop).start();
-
-		try {
-			verify(gameStep).setup(gameLoop);
-			verify(gameStep, atLeastOnce()).updateLogic(anyDouble());
-			verify(gameStep, atLeastOnce()).renderGraphics();
-			verify(gameStep, atLeastOnce()).paintGraphics();
-		} finally {
-			gameLoop.finish();
-			Thread.sleep(1000);
-			verify(gameStep).terminate();
-		}
+		
+		verify(gameStep).setup(gameLoop);
+        verify(gameStep, atLeastOnce()).updateLogic(anyDouble());
+        verify(gameStep, atLeastOnce()).renderGraphics();
+        verify(gameStep, atLeastOnce()).paintGraphics();
+        
+        gameLoop.finish();
+        Thread.sleep(1000);
+        verify(gameStep).terminate();
 	}
 
 	@Test
@@ -41,7 +39,7 @@ public class GameMainLoopTest {
 		Thread.sleep(2000);
 		try {
 			for (int i = 0; i < 10; i++) {
-				assertEquals(60, gameLoop.getUPS(), 1);
+				assertEquals(60, gameLoop.getUPS(), 5);
 			}
 		} finally {
 			gameLoop.finish();
@@ -55,8 +53,8 @@ public class GameMainLoopTest {
 		solstice.pause();
 		try {
 			assertTrue(solstice.isPause());
-			TimeUnit.SECONDS.sleep(2);
-			assertEquals(0, solstice.getUPS(), 1);
+			TimeUnit.SECONDS.sleep(1);
+			assertEquals(0, solstice.getUPS(), 5);
 		} finally {
 			solstice.finish();
 		}
