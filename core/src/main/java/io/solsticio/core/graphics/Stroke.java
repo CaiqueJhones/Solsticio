@@ -26,11 +26,11 @@ public class Stroke implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    enum Cap {
+    public enum Cap {
         BUTT, SQUARE, ROUND
     }
 
-    enum Join {
+    public enum Join {
         MITER, ROUND, BEVEL
     }
 
